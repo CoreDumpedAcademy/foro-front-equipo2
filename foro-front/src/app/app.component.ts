@@ -13,49 +13,61 @@ import { CookieService } from 'ngx-cookie-service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
+  logged:boolean = false;
 
+  constructor(
+    private router: Router,
+    private api: RoutesService,
+    private cookieService: CookieService,
+  ) { }
 
- constructor(
-   private router: Router,
-   private api: RoutesService,
-   private cookieService: CookieService,
-   ) {}
-// Go home page
-  home(){
+   ngOnInit(){
+    const token = this.cookieService.get('token');
+    this.api.authToken(token).subscribe((response) => {
+      this.logged=true;
+   }, (error: HttpErrorResponse) => {
+     this.logged=false;
+   });
+  }
+  // Go home page
+  home() {
     this.router.navigateByUrl('/home');
   }
-// Go register page
-  register(){
+  // Go register page
+  register() {
     this.router.navigateByUrl('/user/register');
   }
-// go profile page
-  profile(){
+  // go profile page
+  profile() {
     this.router.navigateByUrl('/user');
   }
-
-
-// Search engine to find matches in the different post of the database
-    postSearch(form){
-    this.api.findPost(form.value.data).subscribe((response: {posts: Post[]}) => {
-      this.api.send(response.posts);
+  // Search engine to find matches in the different post of the database
+  postSearch(form) {
+    console.log(form.value);
+    this.api.findPost(form.value.data).subscribe((response: { posts: Post[] }) => {
       this.router.navigateByUrl('post/results');
+      console.log(response);
+      this.api.send(response);
     }, (error: HttpErrorResponse) => {
       console.log(error);
     });
   }
-// login function
+  // login function
   login(data) {
     console.log(data.value);
-    this.api.loginUser(data.value).subscribe((response: {token: string}) => {
+    this.api.loginUser(data.value).subscribe((response: { token: string }) => {
       console.log(response);
       this.cookieService.set('token', response.token);
       this.api.token(response.token);
     }, (error: HttpErrorResponse) => {
       console.log(error);
-
     });
-}
+  }
+  logout(){
+    this.cookieService.delete('token');
+  }
+
 
 }

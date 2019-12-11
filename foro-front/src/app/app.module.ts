@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -31,6 +32,7 @@ import { PostEditorComponent } from './components/posts/post-editor/post-editor.
     HttpClientModule,
     FormsModule,
   ],
+  exports: [RouterModule],
   providers: [CookieService],
   bootstrap: [AppComponent]
 })

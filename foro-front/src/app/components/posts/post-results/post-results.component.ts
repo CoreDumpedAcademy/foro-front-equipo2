@@ -18,10 +18,12 @@ export class PostResultsComponent implements OnInit {
     private api: RoutesService,
     private router: Router,
   ) { }
-
+// comunication beetwen componet app and result
   ngOnInit() {
     this.api.change.subscribe(posts => {
-      this.posts = posts;
+      this.posts = posts.result;
+      console.log(this.posts);
+      
     });
   }
 

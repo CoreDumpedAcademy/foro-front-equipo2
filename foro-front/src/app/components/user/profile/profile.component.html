@@ -1,1 +1,39 @@
-<p>profile works!</p>
+<br>
+<div class="container-fluid">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+        aria-selected="true">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="edit-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="edit"
+        aria-selected="false">Edit</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <br>
+      <h3 class="text-center">Welcome {{user.name}}</h3>
+      <br>
+
+      <ul class="list-group text-center">
+        <li class="list-group-item">Name: {{user.name}}</li>
+        <li class="list-group-item">Surname: {{user.surname}}</li>
+        <li class="list-group-item">Username: @{{user.username}}</li>
+        <li class="list-group-item">Email: {{user.email}}</li>
+      </ul>
+      <br>
+      <h5> Your posts</h5>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let post of posts">{{post.title}}</li>
+        <li class="list-group-item">Morbi leo risus</li>
+
+      </ul>
+
+    </div>
+    <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">...</div>
+
+  </div>
+
+
+</div>

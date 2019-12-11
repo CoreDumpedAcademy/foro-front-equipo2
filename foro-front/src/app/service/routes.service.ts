@@ -22,8 +22,10 @@ export class RoutesService {
   @Output() change: EventEmitter<any> = new EventEmitter();
 
   send(posts: any) {
+    console.log(posts)
     this.posts=posts ;
     this.change.emit(this.posts);
+    console.log(this.posts)
   }
 
 
@@ -31,7 +33,7 @@ export class RoutesService {
   
   // prototype function not the final version
   findPost(data:string){
-    return this.http.get(`${this.adress}posts/${data}`);
+    return this.http.get(`${this.adress}post/find/${data}`);
   }
   // login call to the back end
   loginUser(user:User){
@@ -44,7 +46,10 @@ export class RoutesService {
   // check if the token is correct
   authToken(token: string){
     httpOptions.header= httpOptions.header.set('token', token );
-    console.log(httpOptions.header);
     return this.http.get(`${this.adress}user/loginToken`, { headers : httpOptions.header} );
+  }
+  // get the posts made by an user
+  userPosts(username:string){
+    return this.http.get(`${this.adress}post/user/${username}`);
   }
 }
