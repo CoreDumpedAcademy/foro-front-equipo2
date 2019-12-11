@@ -18,7 +18,9 @@ export class RegisterComponent implements OnInit {
 
 
   register(data) {
+    console.log(data.value)
     this.api.registerUser(data.value).subscribe((response) => {
+      console.log(data.value)
       alert('usuario se ha guardado correctamente');
     }, (error: HttpErrorResponse) => {
       alert(error.error.message);

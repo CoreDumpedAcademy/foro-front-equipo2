@@ -1,10 +1,13 @@
 <div class="container">
   <h2 class="text center">SingUp</h2>
-  <form #registerForm="ngForm" (ngSubmit)="registrer(registerForm.form)">
+  <form #registerForm="ngForm" (ngSubmit)="register(registerForm.form)">
     <div class="form-row text-center">
       <div class="col">
         <input type="text" class="form-control" name="name" placeholder="name" ngModel>
       </div>
+      <div class="col">
+          <input type="text" class="form-control" name="surname" placeholder="surname" ngModel>
+        </div>
       <div class="col">
         <input type="text" class="form-control" name="username" placeholder="username" ngModel>
       </div>
