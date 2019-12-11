@@ -1,1 +1,14 @@
-<p>register works!</p>
+<div class="container">
+  <h2 class="text center"> Bienvenido al Registro</h2>
+  <form #registerForm="ngForm" (ngSubmit)="registrer(registerForm.form)">
+    <div class="form-row text-center">
+      <div class="col">
+        <input type="text" class="form-control" name="username" placeholder="username" ngModel>
+      </div>
+      <div class="col">
+        <input type="password" class="form-control" name="password" placeholder="password" ngModel>
+      </div>
+          <button type="submit" class="btn btn-secondary" > singUp </button>
+    </div>
+  </form>
+</div>
