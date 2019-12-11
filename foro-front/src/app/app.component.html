@@ -1,3 +1,57 @@
-<div>
-  <app-register></app-register>
-</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" (click)="home()">Forum</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Navbar elements-->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" (click)="home()">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Messages</a>
+      </li>
+    </ul>
+    <!-- Post searcher -->
+    <form #F="ngForm" class="form-inline" (ngSubmit)="postSearch(F.form)">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search posts" name=data ngModel required>
+      <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
+    </form>
+  </div>
+  <!-- User menu -->
+  <div class="btn-group px-3">
+    <button type="button" class="btn btn-secondary rounded-circle" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      <i class="far fa-user"></i>
+    </button>
+    <!-- Login form -->
+  <div class="dropdown-menu dropdown-menu-right">
+    <div *ngIf = "logged === false">
+        <form #formulario="ngForm" (ngSubmit)="login(formulario.form)" class="px-4 py-3">
+          <div class="form-group">
+            <label>Email or username</label>
+            <input type="text" name="username" class="form-control" placeholder="Email or username" ngModel required>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" placeholder="Password" ngModel required>
+          </div>
+          <button type="submit"  class="btn btn-primary">Sign in</button>
+        </form>
+        <div class="dropdown-divider"></div>
+        <!-- Sign up-->
+        <a class="dropdown-item" (click)="register()">New around here? Sign up</a>
+      </div>
+      <div *ngIf = "logged">
+        <!-- Profile info -->
+        <a class="dropdown-item" (click)="profile()">Profile</a>
+        <a class="dropdown-item" (click)="logout()">Logout</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
