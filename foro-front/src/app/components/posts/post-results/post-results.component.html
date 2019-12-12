@@ -1,1 +1,17 @@
-<p>post-results works!</p>
+<div class="container-fluid">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>post</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor= "let post of posts">
+                    <td>{{post.Username}}</td>
+                    <td><a routerLink="../post">{{post.title}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+</div>

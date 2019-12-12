@@ -64,12 +64,12 @@ export class RoutesService {
   getComments(postId: string):Observable<Comment[]>{
     return this.http.get<Comment[]>(`${this.adress}comment/post/${postId}`);
   }
-  // post comment
-  postComment(data){
-    return this.http.post(`${this.adress}comment/new`, data);
+  // Get topics
+  getTopics():Observable<Comment[]>{
+    return this.http.get<Comment[]>(`${this.adress}topic/all`);
   }
-  // Get post by id
-  getPost(postId: string):Observable<Comment[]>{
-    return this.http.get<Comment[]>(`${this.adress}post/${postId}`);
+  // Get post by id or topic
+  getPost(topicId: string):Observable<Comment[]>{
+    return this.http.get<Comment[]>(`${this.adress}post/topic/${topicId}`);
   }
 }

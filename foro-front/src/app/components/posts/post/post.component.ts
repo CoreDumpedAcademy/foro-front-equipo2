@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RoutesService } from 'src/app/service/routes.service';
 import { Router } from '@angular/router';
 import { Comment } from '../../../interfaces/comment';
-
+import {PostResultsComponent } from '../post-results/post-results.component';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -24,7 +24,7 @@ export class PostComponent implements OnInit {
     });
   }
   response(form): void{
-    this.respServices.postComment(form.value);
+    this.respServices.commentPost(form.value);
     console.log(form.value);
   }
 }

@@ -1,1 +1,15 @@
-<p>post-topic works!</p>
+<div class="container-fluid">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>topic</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor= "let topic of topics">
+                <td><a routerLink="../post-results">{{topic.title}}</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

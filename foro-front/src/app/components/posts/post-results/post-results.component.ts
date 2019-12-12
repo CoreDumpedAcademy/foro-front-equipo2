@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RoutesService } from 'src/app/service/routes.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post-results',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostResultsComponent implements OnInit {
 
-  constructor() { }
+  public posts=[];
+  constructor(private service: RoutesService,private router: Router) { }
 
   ngOnInit() {
+    this.service.getPosts().subscribe(data =>{
+      this.posts = data;
+      console.log(this.posts);
+    });
   }
 
 }
