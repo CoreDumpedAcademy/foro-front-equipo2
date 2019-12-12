@@ -1,7 +1,12 @@
 
 <h3>Results</h3>
 
-  <ul class="list-group">
-      <li class="list-group-item" *ngFor="let post of posts">{{post.title}}</li>
-    </ul>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let post of posts">
+    <div style="width: 100%;">
+      <span style="float: left;">{{post.title}}</span>
+      <small style="float: right;">@{{post.username}}</small>
+    </div>
+  </li>
+</ul>
   
