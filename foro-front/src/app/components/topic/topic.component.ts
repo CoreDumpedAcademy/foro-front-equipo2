@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 import { Post } from 'src/app/interfaces/post';
-import { timingSafeEqual } from 'crypto';
 import { Topic } from 'src/app/interfaces/topic';
 
 @Component({
