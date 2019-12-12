@@ -52,4 +52,8 @@ export class RoutesService {
   userPosts(username:string){
     return this.http.get(`${this.adress}post/user/${username}`);
   }
+  create(post:Post){
+    return this.http.post(`${this.adress}post/new`,post);
+  }
+
 }

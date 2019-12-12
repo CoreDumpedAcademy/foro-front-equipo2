@@ -1,3 +1,4 @@
+import { PostEditorComponent } from './components/posts/post-editor/post-editor.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { PostResultsComponent } from './components/posts/post-results/post-results.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:'post',component: PostComponent},
   {path:'post/topic',component: PostTopicComponent},
   {path:'post/results',component: PostResultsComponent},
+  {path:'post/create',component: PostEditorComponent},
   {path:'user',component: ProfileComponent},
   {path:'user/register',component: RegisterComponent},
 ];

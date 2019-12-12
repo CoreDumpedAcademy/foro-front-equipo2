@@ -46,8 +46,8 @@ export class AppComponent implements OnInit {
   // Search engine to find matches in the different post of the database
   postSearch(form) {
     console.log(form.value);
+    this.router.navigateByUrl('post/results');
     this.api.findPost(form.value.data).subscribe((response: { posts: Post[] }) => {
-      this.router.navigateByUrl('post/results');
       console.log(response);
       this.api.send(response);
     }, (error: HttpErrorResponse) => {
@@ -61,12 +61,15 @@ export class AppComponent implements OnInit {
       console.log(response);
       this.cookieService.set('token', response.token);
       this.api.token(response.token);
+      location.reload();
     }, (error: HttpErrorResponse) => {
       console.log(error);
     });
   }
   logout(){
     this.cookieService.delete('token');
+    location.reload();
+    location.reload();
   }
 
 
