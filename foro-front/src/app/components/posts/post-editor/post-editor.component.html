@@ -1,7 +1,7 @@
 
 <div class="container-fluid" >
   <br>
-  <h4>Edit new post!</h4>
+  <h4 class="text-center">Edit new post!</h4>
   <br>
   <form #F="ngForm" (ngSubmit)="share(F.form)">
   <div class="container">
@@ -11,10 +11,7 @@
     <br>
     <div class="form-group">
         <select class="custom-select" name=topicId ngModel required>
-          <option value="">Choose...</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+          <option *ngFor="let topic of topics" value="{{topic.title}}">{{topic.title}}</option>
         </select>
       </div>
         <button type="submit" class="btn btn-primary">Submit</button>

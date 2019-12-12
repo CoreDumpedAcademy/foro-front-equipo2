@@ -1,10 +1,12 @@
-<h4 class="text-center" ng-if='topic.title'> {{topic.title}}</h4>
 
-<ul class="list-group">
-    <li class="list-group-item" *ngFor="let post of posts" (click)="goToPost(post._id)">
-        <div style="width: 100%;">
-            <span style="float: left;">{{post.title}}</span>
-            <small style="float: right;">@{{post.username}}</small>
-        </div>
+<div class="container">
+<br>
+  <h4 class="text-center" ng-if='topic.title'> {{topic.title}} </h4>
+  <br>
+  <ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between" *ngFor="let post of posts" (click)="goToPost(post._id)">
+      <div>{{post.title}} </div>
+      <div>Created by: {{post.username}}</div>
     </li>
-</ul>
+  </ul>
+</div>
