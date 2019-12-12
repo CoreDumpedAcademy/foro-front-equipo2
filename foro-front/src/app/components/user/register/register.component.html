@@ -2,19 +2,19 @@
   <h2 class="text center">SingUp</h2>
   <form #registerForm="ngForm" (ngSubmit)="register(registerForm.form)">
     <div class="form-row text-center">
-      <div class="col">
+      <div class="col-md-2">
         <input type="text" class="form-control" name="name" placeholder="name" ngModel>
       </div>
-      <div class="col">
+      <div class="col-md-2">
           <input type="text" class="form-control" name="surname" placeholder="surname" ngModel>
         </div>
-      <div class="col">
+      <div class="col-md-2">
         <input type="text" class="form-control" name="username" placeholder="username" ngModel>
       </div>
-      <div class="col">
+      <div class="col-md-2">
           <input type="email" class="form-control" name="email" placeholder="email" ngModel>
       </div>
-      <div class="col">
+      <div class="col-md-2">
         <input type="password" class="form-control" name="password" placeholder="password" ngModel>
       </div>
         <button type="submit" class="btn btn-secondary" > singUp </button>
