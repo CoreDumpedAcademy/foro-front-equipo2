@@ -27,8 +27,10 @@ export class AppComponent implements OnInit {
     const token = this.cookieService.get('token');
     this.api.authToken(token).subscribe((response) => {
       this.logged=true;
+      this.router.navigateByUrl('/home');
    }, (error: HttpErrorResponse) => {
      this.logged=false;
+     this.router.navigateByUrl('/home');
    });
   }
   // Go home page
