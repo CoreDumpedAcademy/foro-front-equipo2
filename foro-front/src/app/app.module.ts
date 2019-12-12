@@ -9,6 +9,9 @@ import { PostComponent } from './components/posts/post/post.component';
 import { PostResultsComponent } from './components/posts/post-results/post-results.component';
 import { PostTopicComponent } from './components/posts/post-topic/post-topic.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { FormsModule } from '@angular/forms';
+import { RoutesService } from './service/routes.service';
+import {  HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,9 +25,11 @@ import { HomePageComponent } from './components/home-page/home-page.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [ RoutesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
