@@ -6,32 +6,75 @@
         aria-selected="true">Profile</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="edit-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="edit"
+      <a class="nav-link" id="edit-tab" data-toggle="tab" href="#edit" role="tab" aria-controls="edit"
         aria-selected="false">Edit</a>
     </li>
   </ul>
+
   <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      <br>
-      <h3 class="text-center">Welcome {{user.name}}</h3>
-      <br>
-
-      <ul class="list-group text-center">
-        <li class="list-group-item">Name: {{user.name}}</li>
-        <li class="list-group-item">Surname: {{user.surname}}</li>
-        <li class="list-group-item">Username: @{{user.username}}</li>
-        <li class="list-group-item">Email: {{user.email}}</li>
-      </ul>
-      <br>
-      <h5> Your posts</h5>
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let post of posts">{{post.title}}</li>
-        <li class="list-group-item">Morbi leo risus</li>
-
-      </ul>
-
+      <div class="container">
+        <br>
+        <h3 class="text-center">Welcome {{user.name}}</h3>
+        <br>
+        
+        <ul class="list-group text-center">
+          <li class="list-group-item">Name: {{user.name}}</li>
+          <li class="list-group-item">Surname: {{user.surname}}</li>
+          <li class="list-group-item">Username: @{{user.username}}</li>
+          <li class="list-group-item">Email: {{user.email}}</li>
+        </ul>
+        <br>
+        <h5> Your posts</h5>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let post of posts">{{post.title}}</li>
+          
+        </ul>
+        
+      </div>
     </div>
-    <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">...</div>
+    <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">
+      <div class="container">
+        <br>
+        <h5>Here you can update your profile!</h5>
+        <p>Choose the fields you want to update</p>
+        <br>
+        <form #F="ngForm" (ngSubmit)="update(F.form)">
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name=name placeholder="New name..." ngModel>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Surname</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name=surname placeholder="New surname..." ngModel>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name=email placeholder="New Email..." ngModel>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Username</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name=username placeholder="New username..." ngModel>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name=password placeholder="New password..." ngModel>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+      </div>
+    </div>
 
   </div>
 

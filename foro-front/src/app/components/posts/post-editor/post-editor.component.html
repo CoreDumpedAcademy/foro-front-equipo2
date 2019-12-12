@@ -1,1 +1,24 @@
-<p>post-editor works!</p>
+
+<div class="container-fluid" >
+  <br>
+  <h4>Edit new post!</h4>
+  <br>
+  <form #F="ngForm" (ngSubmit)="share(F.form)">
+  <div class="container">
+    <input type="text" class="form-control" name=title placeholder="Post title..." ngModel required>
+    <br>
+    <textarea class="form-control rounded-5" name=content placeholder="Write something here..." rows="10" ngModel required ></textarea>
+    <br>
+    <div class="form-group">
+        <select class="custom-select" name=topicId ngModel required>
+          <option value="">Choose...</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+
+</div>

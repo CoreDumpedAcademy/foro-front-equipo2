@@ -25,12 +25,16 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     // check the token in the cookies service
-    const token = this.cookieService.get('token')    
+    const token = this.cookieService.get('token')
+    console.log(token)
     this.api.authToken(token).subscribe((response:{data: User}) => {
       this.user= response.data;
+      console.log(response)
       // post made by the user
-      this.api.userPosts(this.user.username).subscribe((response: Post[]) => {
-        this.posts = response;
+      this.api.userPosts(this.user.username).subscribe((response:{posts}) => {
+        console.log(response)
+        this.posts = response.posts;
+        console.log(this.posts);
       }, (error: HttpErrorResponse) => {
         console.log('there are no posts');
       });
@@ -38,6 +42,10 @@ export class ProfileComponent implements OnInit {
     }, (error: HttpErrorResponse) => {
       this.router.navigateByUrl('/home');
     });
+  }
+
+  update(form){
+    console.log(form.value);
   }
 
 }

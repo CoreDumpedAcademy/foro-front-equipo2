@@ -1,3 +1,6 @@
+import { CookieService } from 'ngx-cookie-service';
+import { RoutesService } from './../../service/routes.service';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private api: RoutesService,
+    private cookieService: CookieService,
+  ) { }
 
   ngOnInit() {
+  }
+  new(){
+    this.router.navigateByUrl('/post/create');
   }
 
 }

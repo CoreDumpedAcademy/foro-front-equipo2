@@ -1,3 +1,5 @@
+import { Post } from './../../../interfaces/post';
+import { User } from './../../../interfaces/user';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { RoutesService } from './../../../service/routes.service';
@@ -12,6 +14,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostEditorComponent implements OnInit {
 
+  user:User;
+  post:Post;
+
   constructor(
     private api: RoutesService,
     private router: Router,
@@ -21,12 +26,25 @@ export class PostEditorComponent implements OnInit {
   ngOnInit() {
         // check the token in the cookies service
         const token = this.cookieService.get('token');
-        this.api.authToken(token).subscribe((response) => {
+        this.api.authToken(token).subscribe((response:{data: User}) => {
+          this.user= response.data;
+          console.log(this.user);
         }, (error: HttpErrorResponse) => {
           console.log('error tienes que iniciar sesion');
           alert('You should be logged for posting');
           this.router.navigateByUrl('/home');
         });
+  }
+
+  share(form){
+    console.log(form.value);
+    this.post=form.value;
+    this.post.username = this.user.username;
+    this.api.create(this.post).subscribe((response) => {
+      console.log(response);
+    }, (error: HttpErrorResponse) => {
+      console.log(error);
+    });
   }
 
   
