@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, EventEmitter, Output } from '@angular/core';
 import { Topic } from '../interfaces/topic';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
-import { ConsoleReporter } from 'jasmine';
+//import { ConsoleReporter } from 'jasmine';
 
 const httpOptions = {
   header: new HttpHeaders({
@@ -21,7 +21,7 @@ export class RoutesService {
 
   // comunication between app components and post results 
   posts: Post[] ;
-  topics: Topic[];
+  topicId: string;
 
   @Output() change: EventEmitter<any> = new EventEmitter();
 
@@ -69,5 +69,9 @@ export class RoutesService {
 
   getTopics(){
     return this.http.get(`${this.adress}topic/all`);
+  }
+
+  getPostsByTopicId(topicId:string){
+    return this.http.get(`${this.adress}post/topic/${topicId}`);
   }
 }

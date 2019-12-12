@@ -5,6 +5,7 @@ import { PostResultsComponent } from './components/posts/post-results/post-resul
 import { PostTopicComponent } from './components/posts/post-topic/post-topic.component';
 import { PostComponent } from './components/posts/post/post.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { TopicComponent } from './components/topic/topic.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'post/create',component: PostEditorComponent},
   {path:'user',component: ProfileComponent},
   {path:'user/register',component: RegisterComponent},
+  {path:'topic',component: TopicComponent},
 ];
 
 @NgModule({

@@ -14,6 +14,7 @@ import { PostResultsComponent } from './components/posts/post-results/post-resul
 import { PostTopicComponent } from './components/posts/post-topic/post-topic.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { PostEditorComponent } from './components/posts/post-editor/post-editor.component';
+import { TopicComponent } from './components/topic/topic.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PostEditorComponent } from './components/posts/post-editor/post-editor.
     PostResultsComponent,
     PostTopicComponent,
     HomePageComponent,
-    PostEditorComponent
+    PostEditorComponent,
+    TopicComponent
   ],
   imports: [
     BrowserModule,

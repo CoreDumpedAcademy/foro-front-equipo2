@@ -3,5 +3,5 @@
 
 <h5> Topics </h5>
 <ul class="list-group">
-    <li class="list-group-item" *ngFor="let topic of topics">{{topic.title}}</li>
+    <li class="list-group-item" *ngFor="let topic of topics" (click)="goToTopic(topic._id)">{{topic.title}}</li>
 </ul>

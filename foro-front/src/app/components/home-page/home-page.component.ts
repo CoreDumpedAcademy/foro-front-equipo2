@@ -29,4 +29,9 @@ export class HomePageComponent implements OnInit {
     this.router.navigateByUrl('/post/create');
   }
 
+  goToTopic(topicId:string) {
+    this.api.topicId = topicId;
+    this.router.navigateByUrl('topic');
+  }
+
 }
