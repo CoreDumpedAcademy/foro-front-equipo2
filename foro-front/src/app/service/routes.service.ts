@@ -46,7 +46,7 @@ export class RoutesService {
 
   // register call to the back end
   registerUser(user:User){
-    return this.http.post(`${this.adress}user/singup`, user );
+    return this.http.post(`${this.adress}user/signup`, user );
   }
 
   // token creation
