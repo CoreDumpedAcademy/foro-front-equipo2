@@ -11,15 +11,20 @@ import { Comment } from '../../../interfaces/comment';
 export class PostComponent implements OnInit {
 
   public comments=[];
+  public post=[];
 
   constructor(private respServices: RoutesService, private router: Router) { }
   ngOnInit() {
+    this.respServices.getPost().subscribe(info =>{
+      this.post= info;
+    });
     this.respServices.getComments().subscribe(data =>{
       this.comments = data;
       console.log(this.comments);
     });
   }
   response(form): void{
+    this.respServices.postComment(form.value);
     console.log(form.value);
   }
 }

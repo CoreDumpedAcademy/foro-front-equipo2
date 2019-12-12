@@ -36,7 +36,7 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <h1>Post.Titulo</h1>
+    <h1>{{post.title}} Post.title</h1>
     <p class="font-weight-light">By user.Username</p>
     <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
         aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo
@@ -62,7 +62,8 @@
         </table>
     <form #frmComment="ngForm" class="response-box" (ngSubmit)="response(frmComment)">
             <label for="email">Write your answer below:</label>
-            <input type="content" class="form-control" placeholder="Answer..." id="comment" value="" >
+            <textarea type="content" class="form-control" placeholder="Answer..." id="comment" value="" >     
+            </textarea>
         <button type="submit" value="send" class="btn btn-primary">Send</button>
     </form>
 </div>

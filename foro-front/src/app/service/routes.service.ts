@@ -1,7 +1,9 @@
 import { Post } from './../interfaces/post';
 import { User } from './../interfaces/user';
+import { Comment } from './../interfaces/comment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, EventEmitter, Output } from '@angular/core';
+import {Observable, BehaviorSubject} from 'rxjs';
 
 const httpOptions = {
   header: new HttpHeaders({
@@ -17,7 +19,9 @@ export class RoutesService {
   constructor(private http:HttpClient) { }
 
   // comunication between app components and post results 
-  posts: Post[] ;
+  posts: Post[];
+
+  authSubject= new BehaviorSubject(false);
 
   @Output() change: EventEmitter<any> = new EventEmitter();
 
@@ -57,7 +61,15 @@ export class RoutesService {
     return this.http.post(`${this.adress}comment/new`, data);
   }
   // get comments of a post
-  getComments(){
-    return this.http.get()
+  getComments(postId: string):Observable<Comment[]>{
+    return this.http.get<Comment[]>(`${this.adress}comment/post/${postId}`);
+  }
+  // post comment
+  postComment(data){
+    return this.http.post(`${this.adress}comment/new`, data);
+  }
+  // Get post by id
+  getPost(postId: string):Observable<Comment[]>{
+    return this.http.get<Comment[]>(`${this.adress}post/${postId}`);
   }
 }
