@@ -74,6 +74,6 @@ export class RoutesService {
   }
   // Get post by id
   getPostId(postId: string):Observable<Comment[]>{
-    return this.http.get<Comment[]>(`${this.adress}post/${postId}`);
+    return this.http.get<Comment[]>(`${this.adress}post/id/${postId}`);
   }
 }
