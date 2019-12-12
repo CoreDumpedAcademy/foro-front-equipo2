@@ -34,9 +34,8 @@ export class TopicComponent implements OnInit {
     // Get the topic
     this.api.getTopicById(this.api.topicId).subscribe((response)=>{
       this.topic = response['topic'];
+      this.topicTitle = this.topic['title'];
     });
-
-    this.topicTitle = this.topic['title'];
   }
 
   goToPost(postId:string){
