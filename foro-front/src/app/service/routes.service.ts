@@ -39,6 +39,12 @@ export class RoutesService {
   loginUser(user:User){
     return this.http.post(`${this.adress}user/login`, user );
   }
+
+  // register call to the back end
+  registerUser(user:User){
+    return this.http.post(`${this.adress}user/singup`, user );
+  }
+
   // token creation
   token(token: string){
     httpOptions.header= httpOptions.header.set('token', token );
@@ -52,8 +58,10 @@ export class RoutesService {
   userPosts(username:string){
     return this.http.get(`${this.adress}post/user/${username}`);
   }
+
   create(post:Post){
     return this.http.post(`${this.adress}post/new`,post);
   }
+
 
 }
