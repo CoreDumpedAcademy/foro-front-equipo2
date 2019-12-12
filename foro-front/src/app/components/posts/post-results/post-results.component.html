@@ -1,12 +1,11 @@
-
-<h3>Results</h3>
-
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let post of posts">
-    <div style="width: 100%;">
-      <span style="float: left;">{{post.title}}</span>
-      <small style="float: right;">@{{post.username}}</small>
-    </div>
-  </li>
-</ul>
+<div class="container">
+  <br>
+  <h3 class="text-center">Results</h3>
   
+  <ul class="list-group">
+    <li class="list-group-item d-flex justify-content-between" *ngFor="let post of posts" (click)="goToPost(post._id)">
+      <div>{{post.title}} </div>
+      <div>Created by: {{post.username}}</div>
+    </li>
+  </ul>
+</div>

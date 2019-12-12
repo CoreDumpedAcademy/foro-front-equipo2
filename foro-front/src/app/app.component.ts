@@ -70,7 +70,8 @@ export class AppComponent implements OnInit {
   }
   logout(){
     this.cookieService.delete('token');
-    location.reload();
+    this.router.navigateByUrl('/home');
+    this.cookieService.delete('token');
     location.reload();
   }
 
