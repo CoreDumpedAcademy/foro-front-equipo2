@@ -68,8 +68,12 @@ export class RoutesService {
   getTopics():Observable<Comment[]>{
     return this.http.get<Comment[]>(`${this.adress}topic/all`);
   }
-  // Get post by id or topic
-  getPost(topicId: string):Observable<Comment[]>{
+  // Get post by  or topic
+  getPostTopic(topicId: string):Observable<Comment[]>{
     return this.http.get<Comment[]>(`${this.adress}post/topic/${topicId}`);
+  }
+  // Get post by id
+  getPostId(postId: string):Observable<Comment[]>{
+    return this.http.get<Comment[]>(`${this.adress}post/${postId}`);
   }
 }

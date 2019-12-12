@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoutesService } from 'src/app/service/routes.service';
 import { Router } from '@angular/router';
+import { Globals } from 'src/app/globals';
 
 @Component({
   selector: 'app-post-topic',
@@ -8,13 +9,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./post-topic.component.css']
 })
 export class PostTopicComponent implements OnInit {
-  public topics=[];
-  constructor(private service: RoutesService, private router: Router) { }
+  public posts=[];
+  constructor(private service: RoutesService, private router: Router, public globals: Globals) { }
 
   ngOnInit() {
-    this.service.getTopics().subscribe(data =>{
-      this.topics = data;
+    this.service.getPostTopic(this.globals.topicId).subscribe(data =>{
+      this.posts = data;
     });
+  }
+  topicSelected(el){
+    this.globals.postId = el.getAtribute('postId');
   }
 
 }

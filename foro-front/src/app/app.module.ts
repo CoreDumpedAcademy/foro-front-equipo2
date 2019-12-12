@@ -12,6 +12,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { FormsModule } from '@angular/forms';
 import { RoutesService } from './service/routes.service';
 import {  HttpClientModule } from '@angular/common/http';
+import { Globals } from './globals';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import {  HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [ RoutesService],
+  providers: [ RoutesService, Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

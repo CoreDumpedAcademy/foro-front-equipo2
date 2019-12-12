@@ -9,14 +9,10 @@ import { Router } from '@angular/router';
 })
 export class PostResultsComponent implements OnInit {
 
-  public posts=[];
+
   constructor(private service: RoutesService,private router: Router) { }
 
   ngOnInit() {
-    this.service.getPosts().subscribe(data =>{
-      this.posts = data;
-      console.log(this.posts);
-    });
   }
 
 }
