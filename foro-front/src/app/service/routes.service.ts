@@ -74,4 +74,8 @@ export class RoutesService {
   getPostsByTopicId(topicId:string){
     return this.http.get(`${this.adress}post/topic/${topicId}`);
   }
+
+  getTopicById(topicId:string){
+    return this.http.get(`${this.adress}topic/id/${topicId}`);
+  }
 }
