@@ -1,3 +1,4 @@
+import { Topic } from 'src/app/interfaces/topic';
 import { Post } from './../../../interfaces/post';
 import { User } from './../../../interfaces/user';
 import { CookieService } from 'ngx-cookie-service';
@@ -16,6 +17,7 @@ export class PostEditorComponent implements OnInit {
 
   user:User;
   post:Post;
+  topics: Topic[];
 
   constructor(
     private api: RoutesService,
@@ -28,7 +30,11 @@ export class PostEditorComponent implements OnInit {
         const token = this.cookieService.get('token');
         this.api.authToken(token).subscribe((response:{data: User}) => {
           this.user= response.data;
-          console.log(this.user);
+
+          this.api.getTopics().subscribe((response) => {
+            this.topics = response['topics'];
+          });
+          
         }, (error: HttpErrorResponse) => {
           console.log('error tienes que iniciar sesion');
           alert('You should be logged for posting');

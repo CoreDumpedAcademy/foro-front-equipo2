@@ -1,7 +1,12 @@
-<p>home</p>
-<button (click)="new()">New post</button>
-
-<h5> Topics </h5>
-<ul class="list-group">
+<div class="container-fluid">
+  <br>
+    <div class="d-flex flex-row-reverse">
+      <button type="button" (click)="new()" class="btn btn-primary"><i class="fas fa-plus-square"></i> Create a new post</button>
+      </div>
+  
+  <h3 class="text-center"> Topics </h3>
+  <br>
+  <ul class="list-group">
     <li class="list-group-item" *ngFor="let topic of topics" (click)="goToTopic(topic._id)">{{topic.title}}</li>
-</ul>
+  </ul>
+</div>
