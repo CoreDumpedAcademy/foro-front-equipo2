@@ -11,7 +11,6 @@ import { RegisterComponent } from './components/user/register/register.component
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { PostComponent } from './components/posts/post/post.component';
 import { PostResultsComponent } from './components/posts/post-results/post-results.component';
-import { PostTopicComponent } from './components/posts/post-topic/post-topic.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { PostEditorComponent } from './components/posts/post-editor/post-editor.component';
 import { TopicComponent } from './components/topic/topic.component';
@@ -23,7 +22,6 @@ import { TopicComponent } from './components/topic/topic.component';
     ProfileComponent,
     PostComponent,
     PostResultsComponent,
-    PostTopicComponent,
     HomePageComponent,
     PostEditorComponent,
     TopicComponent
