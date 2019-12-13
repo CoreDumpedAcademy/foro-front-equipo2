@@ -69,6 +69,7 @@ export class RoutesService {
   }
 
   create(post:Post){
+    console.log(post);
     return this.http.post(`${this.adress}post/new`,post);
   }
 

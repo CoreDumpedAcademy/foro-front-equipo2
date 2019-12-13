@@ -1,4 +1,4 @@
-import { Topic } from 'src/app/interfaces/topic';
+import { Topic } from './../../../interfaces/topic';
 import { Post } from './../../../interfaces/post';
 import { User } from './../../../interfaces/user';
 import { CookieService } from 'ngx-cookie-service';
@@ -18,6 +18,8 @@ export class PostEditorComponent implements OnInit {
   user:User;
   post:Post;
   topics: Topic[];
+  topic: Topic;
+  index: number;
 
   constructor(
     private api: RoutesService,
@@ -33,6 +35,7 @@ export class PostEditorComponent implements OnInit {
 
           this.api.getTopics().subscribe((response) => {
             this.topics = response['topics'];
+            
           });
           
         }, (error: HttpErrorResponse) => {
@@ -46,6 +49,11 @@ export class PostEditorComponent implements OnInit {
     console.log(form.value);
     this.post=form.value;
     this.post.username = this.user.username;
+    this.index = form.value.topicId
+    this.post.topicId = this.topics[this.index]._id;
+    console.log(this.post);
+
+    
     this.api.create(this.post).subscribe((response) => {
       console.log(response);
     }, (error: HttpErrorResponse) => {

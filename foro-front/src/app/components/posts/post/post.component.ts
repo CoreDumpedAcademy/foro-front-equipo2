@@ -3,7 +3,7 @@ import { RoutesService } from 'src/app/service/routes.service';
 import { Router } from '@angular/router';
 import { Post } from 'src/app/interfaces/post';
 import { User } from 'src/app/interfaces/user';
-import {Comment } from 'src/app/interfaces/comment';
+import { Comment } from 'src/app/interfaces/comment';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpErrorResponse } from '@angular/common/http';
 @Component({
@@ -21,26 +21,28 @@ export class PostComponent implements OnInit {
   postContent: string;
   user:User;
 
-  constructor(private respServices: RoutesService, private router: Router, private cookieService: CookieService) { }
+  constructor(private api: RoutesService, private router: Router, private cookieService: CookieService) { }
 
   ngOnInit() {
     this.postTitle= 'Title';
     this.postContent= 'Content';
     // Get the post
-    this.respServices.getPostById(this.respServices.postId).subscribe((response)=>{
+    console.log(this.api.postId);
+    
+    this.api.getPostById(this.api.postId).subscribe((response)=>{
       this.post= response['post'];
       this.postTitle = this.post['title'];
       this.postContent = this.post['content'];
       this.postId = this.post['id'];
     });
     // Get the comments by postId
-  this.respServices.getComments(this.respServices.postId).subscribe(data =>{
+  this.api.getComments(this.api.postId).subscribe(data =>{
     this.comments = data['comments'];
     console.log(this.comments);
   });
       // Check the token in cookies
       const token = this.cookieService.get('token');
-      this.respServices.authToken(token).subscribe((response:{data: User}) => {
+      this.api.authToken(token).subscribe((response:{data: User}) => {
         this.user= response.data;
       }, (error: HttpErrorResponse) => {
         console.log('No puedes comentar sin logearte');
@@ -48,13 +50,25 @@ export class PostComponent implements OnInit {
       });
   }
   response(form): void{
+    console.log(form.value);
     this.comment = form.value;
-    this.comment.postId = this.postId;
+    this.comment.postId = this.api.postId;
+    console.log(this.comment.postId);
     this.comment.userEmail = this.user.email;
     this.comment.username = this.user.username;
-    this.respServices.commentPost(this.comment).subscribe(res =>{
-      this.router.navigateByUrl('/post');
-      console.log(res);
+    
+    this.api.commentPost(this.comment).subscribe(res =>{
+      this.api.getPostById(this.api.postId).subscribe((response)=>{
+        this.post= response['post'];
+        this.postTitle = this.post['title'];
+        this.postContent = this.post['content'];
+        this.postId = this.post['id'];
+      });
+      // Get the comments by postId
+    this.api.getComments(this.api.postId).subscribe(data =>{
+      this.comments = data['comments'];
+      console.log(this.comments);
+    });
     });
     console.log(form.value);
   }

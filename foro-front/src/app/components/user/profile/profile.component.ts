@@ -47,5 +47,8 @@ export class ProfileComponent implements OnInit {
   update(form){
     console.log(form.value);
   }
-
+  goToPost(postId:string){
+    this.api.postId = postId;
+    this.router.navigateByUrl('post');
+  }
 }

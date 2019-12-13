@@ -11,7 +11,7 @@
     <br>
     <div class="form-group">
         <select class="custom-select" name=topicId ngModel required>
-          <option *ngFor="let topic of topics" value="{{topic.title}}">{{topic.title}}</option>
+          <option *ngFor="let topic of topics; index as i" value="{{i}}">{{topic?.title}}</option>
         </select>
       </div>
         <button type="submit" class="btn btn-primary">Submit</button>
