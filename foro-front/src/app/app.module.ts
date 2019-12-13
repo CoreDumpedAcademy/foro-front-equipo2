@@ -14,6 +14,7 @@ import { PostResultsComponent } from './components/posts/post-results/post-resul
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { PostEditorComponent } from './components/posts/post-editor/post-editor.component';
 import { TopicComponent } from './components/topic/topic.component';
+import { RoutesService } from './service/routes.service';
 
 @NgModule({
   declarations: [

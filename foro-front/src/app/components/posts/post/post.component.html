@@ -1,1 +1,24 @@
-<p>post works!</p>
+<div class="container-fluid">
+    <h1>{{post?.title}}</h1>
+    <p class="font-weight-light">By {{post?.username}}</p>
+    <p>{{post?.content}}</p>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>User(email)</th>
+                    <th>Comment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor= "let comment of comments">
+                    <td>{{comment?.userEmail}}</td>
+                    <td>{{comment?.content}}</td>
+                </tr>
+            </tbody>
+        </table>
+    <form #frmComment="ngForm" class="response-box" (ngSubmit)="response(frmComment)">
+            <label for="email">Write your answer below:</label>
+            <input type="content" name="content"class="form-control" placeholder="Answer..." id="comment" value="" ngModel required>     
+        <button  type="submit" value="send" class="btn btn-primary">Send</button>
+    </form>
+</div>

@@ -23,6 +23,11 @@ export class RoutesService {
   posts: Post[] ;
   topicId: string;
 
+
+  postTitle: string;
+  postId: string;
+  comments: Comment[];
+
   @Output() change: EventEmitter<any> = new EventEmitter();
 
   send(posts: any) {
@@ -74,8 +79,16 @@ export class RoutesService {
   getPostsByTopicId(topicId:string){
     return this.http.get(`${this.adress}post/topic/${topicId}`);
   }
-
   getTopicById(topicId:string){
     return this.http.get(`${this.adress}topic/id/${topicId}`);
+  }
+  getPostById(postId: string){
+    return this.http.get(`${this.adress}post/id/${postId}`);
+  }
+  getComments(postId: string){
+    return this.http.get(`${this.adress}comment/post/${postId}`);
+  }
+  commentPost(data){
+    return this.http.post(`${this.adress}comment/new`, data);
   }
 }

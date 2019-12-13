@@ -4,5 +4,6 @@ export interface Comment {
   userEmail: string,
   content: string,
   creationDate: Date,
-  editDate: Date
+  editDate: Date,
+  username: string,
 }

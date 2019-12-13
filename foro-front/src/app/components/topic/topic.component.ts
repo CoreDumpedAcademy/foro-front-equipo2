@@ -39,7 +39,8 @@ export class TopicComponent implements OnInit {
   }
 
   goToPost(postId:string){
-    alert('Unimplemented');
+    this.api.postId = postId;
+    this.router.navigateByUrl('post');
   }
 
 }
