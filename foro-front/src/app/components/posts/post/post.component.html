@@ -17,8 +17,9 @@
             </tbody>
         </table>
     <form #frmComment="ngForm" class="response-box" (ngSubmit)="response(frmComment)">
-            <label for="email">Write your answer below:</label>
-            <input type="content" name="content"class="form-control" placeholder="Answer..." id="comment" value="" ngModel required>     
+            <label for="email">Write your comment below:</label>
+            <textarea rows="6" type="content" name="content"class="form-control " placeholder="Answer..." id="comment" value="" ngModel required>
+            </textarea>     
         <button  type="submit" value="send" class="btn btn-primary">Send</button>
     </form>
 </div>
