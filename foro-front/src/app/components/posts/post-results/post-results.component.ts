@@ -30,5 +30,9 @@ export class PostResultsComponent implements OnInit {
   responsePost(posts) {
     this.posts = posts;
 }
+goToPost(postId:string){
+  this.api.postId = postId;
+  this.router.navigateByUrl('post');
+}
 
 }
