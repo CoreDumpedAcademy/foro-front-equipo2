@@ -38,7 +38,6 @@ export class PostComponent implements OnInit {
     // Get the comments by postId
   this.api.getComments(this.api.postId).subscribe(data =>{
     this.comments = data['comments'];
-    console.log(this.comments);
   });
       // Check the token in cookies
       const token = this.cookieService.get('token');
@@ -49,6 +48,7 @@ export class PostComponent implements OnInit {
         alert('You must be logged to comment in posts');
       });
   }
+
   response(form): void{
     console.log(form.value);
     this.comment = form.value;
@@ -67,7 +67,6 @@ export class PostComponent implements OnInit {
       // Get the comments by postId
     this.api.getComments(this.api.postId).subscribe(data =>{
       this.comments = data['comments'];
-      console.log(this.comments);
     });
     });
     console.log(form.value);
