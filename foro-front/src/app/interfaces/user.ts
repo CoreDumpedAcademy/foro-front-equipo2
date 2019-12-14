@@ -4,5 +4,6 @@ export interface User {
   password: string,
   name: string,
   surname: string,
-  registerDate: Date
+  registerDate: Date,
+  voteType:string,
 }
