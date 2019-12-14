@@ -20,37 +20,39 @@
             {{post?.content}}
         </div>
     </div>
+<div class="container">
 
     <!-- Comments Form -->
     <div class="card my-4">
         <h5 class="card-header">Leave a Comment:</h5>
         <div class="card-body">
-
+            
             <div class="form-group">
                 <form #frmComment="ngForm" class="response-box" (ngSubmit)="response(frmComment.form)">
                     <textarea rows="2" type="content" name="content" class="form-control " placeholder="Answer..."
-                        id="comment" value="" ngModel required>
-                            </textarea>
-                    <button type="submit" value="send" class="btn btn-primary mt-2">Send</button>
-                </form>
+                    id="comment" value="" ngModel required>
+                </textarea>
+                <button type="submit" value="send" class="btn btn-primary mt-2">Send</button>
+            </form>
+        </div>
+        
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <div *ngFor="let comment of comments" class="media mb-4">
+            <span style="font-size: 3em" class="mr-3">
+                    <i class="fas fa-user-circle"></i>
+                </span>
+                
+                <div class="media-body">
+                    <span class="text-success">{{comment?.userEmail}}</span>
+                    <br>
+                    {{comment?.content}}
+                </div>
+                
+                <hr>
             </div>
-
         </div>
     </div>
-    <div class="card">
-            <div class="card-body">
-                <div *ngFor="let comment of comments" class="media mb-4">
-                    <span style="font-size: 3em" class="mr-3">
-                            <i class="fas fa-user-circle"></i>
-                        </span>
-                        
-                        <div class="media-body">
-                            <span class="text-success">{{comment?.userEmail}}</span>
-                            <br>
-                            {{comment?.content}}
-                        </div>
-                        
-                        <hr>
-                    </div>
-                </div>
-            </div>
+</div>
