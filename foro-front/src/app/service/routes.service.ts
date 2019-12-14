@@ -17,6 +17,7 @@ const httpOptions = {
 })
 export class RoutesService {
 
+  
   constructor(private http:HttpClient) { }
 
   // comunication between app components and post results 
@@ -89,7 +90,11 @@ export class RoutesService {
   getComments(postId: string){
     return this.http.get(`${this.adress}comment/post/${postId}`);
   }
+  Rating(data:object, commentId:string){
+    return this.http.post(`${this.adress}comment/vote/${commentId}`,data);
+  }
   commentPost(data){
     return this.http.post(`${this.adress}comment/new`, data);
   }
+
 }

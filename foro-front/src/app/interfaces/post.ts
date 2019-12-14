@@ -1,5 +1,5 @@
 export interface Post {
-  postId: String;
+  postId: string;
   topicId: string,
   username: string,
   title: string,
