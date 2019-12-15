@@ -1,14 +1,14 @@
 <div class="container">
     <br>
-    <h3 class="text-center">{{post?.title}}</h3>
+    <h3 class="text-center text-primary">{{post?.title}}</h3>
     <div class="card">
             <div class="card-body">
                     {{post?.content}}
             </div>
           </div>
-    <p class="font-weight-light container">Created  by {{post?.username}}</p>
+    <p class="font-weight-light container text-muted">Created  by {{post?.username}}</p>
 
-        <table class="table table-dark">
+        <table class="table table-striped table-dark ">
             <thead>
                 <tr>
                     <th>User(email)</th>
@@ -23,7 +23,7 @@
             </tbody>
         </table>
     <form #frmComment="ngForm" class="response-box" (ngSubmit)="response(frmComment)">
-            <label for="email">Write your comment below:</label>
+            <label for="email" class="text-muted">Write your comment below:</label>
             <textarea rows="3" type="content" name="content"class="form-control " placeholder="Answer..." id="comment" value="" ngModel required>
             </textarea>     
         <button  type="submit" value="send" class="btn btn-primary">Send</button>

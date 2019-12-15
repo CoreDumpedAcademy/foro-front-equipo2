@@ -1,6 +1,6 @@
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" (click)="home()">Forum</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand text-white" (click)="home()">ForoTakus</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -18,12 +18,12 @@
     <!-- Post searcher -->
     <form #F="ngForm" class="form-inline" (ngSubmit)="postSearch(F.form)">
       <input class="form-control mr-sm-2" type="text" placeholder="Search posts" name=data ngModel required>
-      <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
+      <button class="btn btn-outline-primary my-2 my-sm-0">Search</button>
     </form>
   </div>
   <!-- User menu -->
   <div class="btn-group px-3">
-    <button type="button" class="btn btn-secondary rounded-circle" data-toggle="dropdown" aria-haspopup="true"
+    <button type="button" class="btn btn-primary rounded-circle" data-toggle="dropdown" aria-haspopup="true"
       aria-expanded="false">
       <i class="far fa-user"></i>
     </button>
