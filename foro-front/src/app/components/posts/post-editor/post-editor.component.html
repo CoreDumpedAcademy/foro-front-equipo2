@@ -10,7 +10,7 @@
     <textarea class="form-control rounded-5" name=content placeholder="Write something here..." rows="10" ngModel required ></textarea>
     <br>
     <div class="form-group">
-        <select class="custom-select" name=topicId ngModel required>
+        <select class="custom-select" name=index ngModel required>
           <option *ngFor="let topic of topics; index as i" value="{{i}}">{{topic?.title}}</option>
         </select>
       </div>

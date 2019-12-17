@@ -70,7 +70,6 @@ export class RoutesService {
   }
 
   create(post:Post){
-    console.log(post);
     return this.http.post(`${this.adress}post/new`,post);
   }
 
@@ -90,11 +89,29 @@ export class RoutesService {
   getComments(postId: string){
     return this.http.get(`${this.adress}comment/post/${postId}`);
   }
+  commentPost(data){
+    return this.http.post(`${this.adress}comment/new`, data);
+  }
   Rating(data:object, commentId:string){
     return this.http.post(`${this.adress}comment/vote/${commentId}`,data);
   }
-  commentPost(data){
-    return this.http.post(`${this.adress}comment/new`, data);
+  deleteComment(user,id){
+    return this.http.delete(`${this.adress}comment/delete/${id}`,user._id);
+  }
+  editComment(user,id,content:string){
+  var usernameId:{usernameId:User};
+  usernameId.usernameId=user._id;
+
+    return this.http.patch(`${this.adress}comment/edit/${id}`,usernameId);
+  }
+  sendMessage(data){
+    return this.http.post(`${this.adress}private/pm/send`, data);
+  }
+  reciveMessage(usernameId){
+    return this.http.get(`${this.adress}private/pm/${usernameId}`);
+  }
+  getusername(usernameId){
+    return this.http.get(`${this.adress}user/username/${usernameId}`);
   }
 
 }

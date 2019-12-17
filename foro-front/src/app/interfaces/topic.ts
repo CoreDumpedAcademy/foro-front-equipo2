@@ -1,6 +1,7 @@
 export interface Topic {
   _id:string,
-  username: string,
+  usernameId: string,
+  desctiption: string,
   title: string,
   creationDate: Date,
   editDate: Date
