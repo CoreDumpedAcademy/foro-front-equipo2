@@ -12,7 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-
+  
   comments: Comment[];
   comment: Comment;
   post: Post;
@@ -27,8 +27,6 @@ export class PostComponent implements OnInit {
     this.postTitle= 'Title';
     this.postContent= 'Content';
     // Get the post
-    console.log(this.api.postId);
-    
     this.api.getPostById(this.api.postId).subscribe((response)=>{
       this.post= response['post'];
       this.postTitle = this.post['title'];
@@ -37,9 +35,11 @@ export class PostComponent implements OnInit {
     });
     // Get the comments by postId
   this.api.getComments(this.api.postId).subscribe(data =>{
+    console.log(data);
     this.comments = data['comments'];
-    console.log(this.comments);
+    console.log(this.comments[0])
   });
+
       // Check the token in cookies
       const token = this.cookieService.get('token');
       this.api.authToken(token).subscribe((response:{data: User}) => {
@@ -49,6 +49,7 @@ export class PostComponent implements OnInit {
         alert('You must be logged to comment in posts');
       });
   }
+
   response(form): void{
     console.log(form.value);
     this.comment = form.value;
@@ -67,10 +68,36 @@ export class PostComponent implements OnInit {
       // Get the comments by postId
     this.api.getComments(this.api.postId).subscribe(data =>{
       this.comments = data['comments'];
-      console.log(this.comments);
     });
     });
     console.log(form.value);
   }
 
+  rate(data,id){
+    var state:string;
+    
+    if (data == 1) {
+      state="up";
+    } else {
+      if (data == -1) {
+        state = "down";
+      } else{
+        state = "";
+      }
+    }
+    this.user.voteType = state;
+
+    this.api.Rating(this.user,id).subscribe(response =>{
+      this.api.getPostById(this.api.postId).subscribe((response)=>{
+        this.post= response['post'];
+        this.postTitle = this.post['title'];
+        this.postContent = this.post['content'];
+        this.postId = this.post['id'];
+      });
+      // Get the comments by postId
+    this.api.getComments(this.api.postId).subscribe(data =>{
+      this.comments = data['comments'];
+    });
+    })
+  }
 }
