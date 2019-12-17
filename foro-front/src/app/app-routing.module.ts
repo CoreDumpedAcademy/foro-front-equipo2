@@ -1,3 +1,4 @@
+import { MDComponent } from './components/messages/md/md.component';
 import { PostEditorComponent } from './components/posts/post-editor/post-editor.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { RegisterComponent } from './components/user/register/register.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'user',component: ProfileComponent},
   {path:'user/register',component: RegisterComponent},
   {path:'topic',component: TopicComponent},
+  {path:'messages/md',component: MDComponent},
 ];
 
 @NgModule({

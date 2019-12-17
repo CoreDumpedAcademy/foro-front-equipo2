@@ -40,16 +40,20 @@ export class PostEditorComponent implements OnInit {
           
         }, (error: HttpErrorResponse) => {
           console.log('error tienes que iniciar sesion');
-          alert('You should be logged for posting');
           this.router.navigateByUrl('/home');
+          alert('You should be logged for posting');
         });
   }
 
   share(form){
+    if (form.value.index == "") {
+      form.value.index = '0';
+      console.log(form.value.index);
+    }
     console.log(form.value);
     this.post=form.value;
-    this.post.username = this.user.username;
-    this.index = form.value.topicId
+    this.post.usernameId = this.user._id;
+    this.index = form.value.index
     this.post.topicId = this.topics[this.index]._id;
     console.log(this.post);
 
