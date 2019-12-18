@@ -48,7 +48,6 @@ export class ProfileComponent implements OnInit {
     console.log(form.value);
     const username = this.user.username
     this.api.editUser(username, form.value).subscribe((response) => {
-      //console.log(response);
       if(form.value.password != "" || form.value.username != ""){
         alert("You must login again");
         this.logout();
@@ -56,7 +55,7 @@ export class ProfileComponent implements OnInit {
       this.router.navigateByUrl('/home');
     }, (error: HttpErrorResponse) => {
       alert("Error al actualizar");
-    })
+    });
   }
   goToPost(postId:string){
     this.api.postId = postId;
