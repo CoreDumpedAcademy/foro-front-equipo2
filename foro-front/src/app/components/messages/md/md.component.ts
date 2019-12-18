@@ -15,6 +15,7 @@ export class MDComponent implements OnInit {
   user:User;
   sendMessage: Message;
   messages:Message[];
+  myMessages:Message[];
   editState:boolean=false;
   editId:string;
 
@@ -32,6 +33,11 @@ export class MDComponent implements OnInit {
       
        this.api.reciveMessage(this.user._id).subscribe((response) =>{
         this.messages=response['pm']
+        for (let i = 0; i < this.messages.length ; i++) {
+          this.api.getusername(this.messages[i].senderUsernameId).subscribe((response:{username:string})=>{
+            this.messages[i].senderUsername = response.username;
+          });
+        }
        });
 
 
