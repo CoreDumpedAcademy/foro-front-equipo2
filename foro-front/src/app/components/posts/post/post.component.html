@@ -50,7 +50,8 @@
                         {{comment?.content}}<br>
                         <div *ngIf="editState && comment?._id == editId " class="pr-4">
                             <form #F="ngForm" (ngSubmit)="patch(F.form,comment?._id,i)">
-                                <textarea class="form-control rounded-5" name="content" placeholder="Write something here..." rows="2" ngModel required ></textarea>
+                                <textarea class="form-control rounded-5" name="content" placeholder="Write something here..." rows="2" ngModel required >
+                                </textarea>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
@@ -59,15 +60,15 @@
 
                     <div class="d-flex flex-row-reverse bd-highlight">
                         <div class="d-flex align-items-end flex-column">
-                            <div style="font-size: 1.15em; color: rgb(24, 231, 76);">
+                            <div style="font-size: 1.15em;" class="text-success">
                                 <a (click)=rate(1,comment?._id)>
-                                    <i class="fas fa-thumbs-up"></i>
+                                    <i class="fas fa-heart"></i>
                                 </a>
                             </div>
                             <div>
-                                <div style="font-size: 1.15em; color: rgb(231, 55, 24);">
+                                <div style="font-size: 1.15em; " class="text-danger">
                                     <a (click)=rate(-1,comment?._id)>
-                                        <i class="fas fa-thumbs-up fa-flip-vertical"></i>
+                                        <i class="fas fa-heart-broken"></i>
                                     </a>
 
                                 </div>

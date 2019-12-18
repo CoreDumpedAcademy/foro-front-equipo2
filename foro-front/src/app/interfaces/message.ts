@@ -1,7 +1,7 @@
 export interface Message {
   _id:string,
   receiverUsernameId: string,
-  reciverUsername:string,
+  receiverUsername:string,
   senderUsernameId: string,
   senderUsername: string,
   title: string,

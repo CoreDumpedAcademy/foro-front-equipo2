@@ -39,6 +39,17 @@ export class MDComponent implements OnInit {
           });
         }
        });
+       this.api.sentMessage(this.user._id).subscribe((response) => {
+        this.myMessages=response['pm']
+        console.log(this.myMessages);
+        
+        for (let i = 0; i < this.myMessages.length ; i++) {
+          this.api.getusername(this.myMessages[i].receiverUsernameId).subscribe((response:{username:string})=>{
+            this.myMessages[i].receiverUsername = response.username;
+            console.log(this.myMessages[i]);
+          });
+        }
+       });
 
 
      }, (error: HttpErrorResponse) => {
@@ -47,9 +58,9 @@ export class MDComponent implements OnInit {
        alert('You should be logged for access to messages');
      });
   }
-  send(form,reciver){
+  send(form,receiver){
     this.sendMessage = form.value;
-    this.sendMessage.receiverUsernameId=reciver
+    this.sendMessage.receiverUsernameId=receiver
     this.sendMessage.senderUsernameId = this.user._id
     console.log(this.sendMessage);
     
