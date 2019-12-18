@@ -116,6 +116,9 @@ export class RoutesService {
   reciveMessage(usernameId){
     return this.http.get(`${this.adress}private/pm/${usernameId}`);
   }
+  sentMessage(usernameId){
+    return this.http.get(`${this.adress}private/pm/sent/${usernameId}`);
+  }
   getusername(usernameId){
     return this.http.get(`${this.adress}user/username/${usernameId}`);
   }
