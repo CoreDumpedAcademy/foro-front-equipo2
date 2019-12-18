@@ -1,3 +1,4 @@
+import { Comment } from 'src/app/interfaces/comment';
 import { Post } from './../interfaces/post';
 import { User } from './../interfaces/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -98,11 +99,8 @@ export class RoutesService {
   deleteComment(user,id){
     return this.http.delete(`${this.adress}comment/delete/${id}`,user._id);
   }
-  editComment(user,id,content:string){
-  var usernameId:{usernameId:User};
-  usernameId.usernameId=user._id;
-
-    return this.http.patch(`${this.adress}comment/edit/${id}`,usernameId);
+  editComment(id,comment:Comment){
+    return this.http.patch(`${this.adress}comment/edit/${id}`,comment);
   }
   sendMessage(data){
     return this.http.post(`${this.adress}private/pm/send`, data);

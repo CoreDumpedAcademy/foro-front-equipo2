@@ -108,10 +108,11 @@ export class PostComponent implements OnInit {
       this.editState = !this.editState;
       this.editId = id;
   }
-  patch(form,id){
-    console.log(this.user._id);
-    this.api.editComment(this.user,id,form.value.content).subscribe((response) => {
-      
+  patch(form,id,i){
+    this.comments[i].content = form.value.content;
+    this.api.editComment(id,this.comments[i]).subscribe((response) => {
+      console.log(response);
+      this.reload();
     })
   }
   

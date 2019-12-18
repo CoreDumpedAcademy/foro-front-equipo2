@@ -38,7 +38,7 @@
 
             </div>
         </div>
-        <div class="card my-1" *ngFor="let comment of comments">
+        <div class="card my-1" *ngFor="let comment of comments; index as i">
             <div class="card-body">
                 <div class="media ">
                     <span style="font-size: 3em" class="mr-3">
@@ -49,7 +49,7 @@
                         <br>
                         {{comment?.content}}<br>
                         <div *ngIf="editState && comment?._id == editId " class="pr-4">
-                            <form #F="ngForm" (ngSubmit)="patch(F.form,comment?._id)">
+                            <form #F="ngForm" (ngSubmit)="patch(F.form,comment?._id,i)">
                                 <textarea class="form-control rounded-5" name="content" placeholder="Write something here..." rows="2" ngModel required ></textarea>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
