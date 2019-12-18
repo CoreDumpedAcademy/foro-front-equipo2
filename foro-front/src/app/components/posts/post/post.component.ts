@@ -16,28 +16,28 @@ export class PostComponent implements OnInit {
   comments: Comment[];
   comment: Comment;
   post: Post;
-  postId: string;
-  postTitle: string;
-  postContent: string;
   user:User;
+  editState:boolean=false;
+  editId:string;
 
   constructor(private api: RoutesService, private router: Router, private cookieService: CookieService) { }
 
   ngOnInit() {
-    this.postTitle= 'Title';
-    this.postContent= 'Content';
     // Get the post
     this.api.getPostById(this.api.postId).subscribe((response)=>{
       this.post= response['post'];
-      this.postTitle = this.post['title'];
-      this.postContent = this.post['content'];
-      this.postId = this.post['id'];
+      this.api.getusername(this.post.usernameId).subscribe((response:{username:string}) =>{
+        this.post.username = response.username;
+      });
     });
     // Get the comments by postId
   this.api.getComments(this.api.postId).subscribe(data =>{
-    console.log(data);
     this.comments = data['comments'];
-    console.log(this.comments[0])
+    for (let i = 0; i < this.comments.length ; i++) {
+      this.api.getusername(this.comments[i].usernameId).subscribe((response:{username:string})=>{
+        this.comments[i].username = response.username;
+      });
+    }
   });
 
       // Check the token in cookies
@@ -50,27 +50,31 @@ export class PostComponent implements OnInit {
       });
   }
 
+  reload(){
+    this.api.getPostById(this.api.postId).subscribe((response)=>{
+      this.post= response['post'];
+      this.api.getusername(this.post.usernameId).subscribe((response:{username:string}) =>{
+        this.post.username = response.username;
+      });
+    });
+    // Get the comments by postId
+  this.api.getComments(this.api.postId).subscribe(data =>{
+    this.comments = data['comments'];
+    for (let i = 0; i < this.comments.length ; i++) {
+      this.api.getusername(this.comments[i].usernameId).subscribe((response:{username:string})=>{
+        this.comments[i].username = response.username;
+      });
+    }
+  });
+  }
+
   response(form): void{
-    console.log(form.value);
     this.comment = form.value;
     this.comment.postId = this.api.postId;
-    console.log(this.comment.postId);
-    this.comment.userEmail = this.user.email;
-    this.comment.username = this.user.username;
-    
+    this.comment.usernameId = this.user._id;
     this.api.commentPost(this.comment).subscribe(res =>{
-      this.api.getPostById(this.api.postId).subscribe((response)=>{
-        this.post= response['post'];
-        this.postTitle = this.post['title'];
-        this.postContent = this.post['content'];
-        this.postId = this.post['id'];
-      });
-      // Get the comments by postId
-    this.api.getComments(this.api.postId).subscribe(data =>{
-      this.comments = data['comments'];
+    this.reload();
     });
-    });
-    console.log(form.value);
   }
 
   rate(data,id){
@@ -88,16 +92,28 @@ export class PostComponent implements OnInit {
     this.user.voteType = state;
 
     this.api.Rating(this.user,id).subscribe(response =>{
-      this.api.getPostById(this.api.postId).subscribe((response)=>{
-        this.post= response['post'];
-        this.postTitle = this.post['title'];
-        this.postContent = this.post['content'];
-        this.postId = this.post['id'];
-      });
-      // Get the comments by postId
-    this.api.getComments(this.api.postId).subscribe(data =>{
-      this.comments = data['comments'];
-    });
+    
+     this.reload();
     })
   }
+
+  delete(id){
+    
+    this.api.deleteComment(this.user,id).subscribe(response =>{
+      this.reload();
+      
+    })
+  }
+  edit(id){
+      this.editState = !this.editState;
+      this.editId = id;
+  }
+  patch(form,id,i){
+    this.comments[i].content = form.value.content;
+    this.api.editComment(id,this.comments[i]).subscribe((response) => {
+      console.log(response);
+      this.reload();
+    })
+  }
+  
 }

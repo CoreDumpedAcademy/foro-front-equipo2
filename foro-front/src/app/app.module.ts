@@ -15,6 +15,8 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { PostEditorComponent } from './components/posts/post-editor/post-editor.component';
 import { TopicComponent } from './components/topic/topic.component';
 import { RoutesService } from './service/routes.service';
+import { MDComponent } from './components/messages/md/md.component';
+import { ContactsComponent } from './components/messages/contacts/contacts.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { RoutesService } from './service/routes.service';
     PostResultsComponent,
     HomePageComponent,
     PostEditorComponent,
-    TopicComponent
+    TopicComponent,
+    MDComponent,
+    ContactsComponent
   ],
   imports: [
     BrowserModule,

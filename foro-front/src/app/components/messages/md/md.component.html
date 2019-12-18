@@ -1,0 +1,139 @@
+<br>
+
+<div class="container-fluid">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="message-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages"
+        aria-selected="true">Messages</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="sendMessage-tab" data-toggle="tab" href="#sendMessage" role="tab"
+        aria-controls="sendMessage" aria-selected="false">New Message</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="sendedMessages-tab" data-toggle="tab" href="#sendedMessages" role="tab"
+        aria-controls="sendedMessages" aria-selected="false">New Message</a>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="messages" role="tabpanel" aria-labelledby="message-tab">
+      <div class="container">
+        <br>
+        <h3 class="text-center">Theese are your messages</h3>
+        <br>
+
+        <div class="card my-1" *ngFor="let message of messages">
+          <div class="card-body">
+            <div class="media ">
+              <span style="font-size: 3em" class="mr-3">
+                <i class="fas fa-user-circle"></i>
+              </span>
+              <div class="media-body">
+                <span class="text-success">From: {{message?.senderUsername}}</span>
+                <br>
+                Title: {{message?.title}}
+                <br>
+                {{message?.content}}<br>
+
+
+                <div *ngIf="editState && message?._id == editId " class="pr-4">
+                  <form #F="ngForm" (ngSubmit)="send(F.form,message?.senderUsernameId)">
+                    <br>
+                    <input type="text" class="form-control" name="title" placeholder="Message title" ngModel>
+                    <textarea class="form-control" name="content" placeholder="Message" ngModel></textarea>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+
+
+              </div>
+
+            </div>
+
+            <div class="d-flex flex-row-reverse bd-highlight">
+              <div class="pr-1" (click)=edit(message?._id)>
+                <i class="fas fa-reply"></i>
+              </div>
+            </div>
+            <div>
+
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+      </div>
+    </div>
+
+
+
+
+
+    <div class="tab-pane fade" id="sendMessage" role="tabpanel" aria-labelledby="sendMessage-tab">
+      <div class="container">
+        <br>
+        <form #F="ngForm" (ngSubmit)="send(F.form)">
+          <div class="form-group">
+            <input type="text" class="form-control" name="title" placeholder="Message title" ngModel>
+            <textarea class="form-control" name="content" placeholder="Message" ngModel></textarea>
+            <input type="text" class="form-control" name="receiverUsernameId" placeholder="User to send message"
+              ngModel>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+    <div class="tab-pane fade" id="sendedMessages" role="tabpanel" aria-labelledby="sendedMessages-tab">
+      <div class="container">
+        <br>
+        <h3 class="text-center">Theese are the messages you have sent</h3>
+        <br>
+
+        <div class="card my-1" *ngFor="let myMessage of myMessages">
+          <div class="card-body">
+            <div class="media ">
+              <span style="font-size: 3em" class="mr-3">
+                <i class="fas fa-user-circle"></i>
+              </span>
+              <div class="media-body">
+                <span class="text-success">To: {{myMessage?.reciverUsername}}</span>
+                <br>
+                Title: {{myMessage?.title}}
+                <br>
+                {{myMessage?.content}}<br>
+
+
+                <div *ngIf="editState && message?._id == editId " class="pr-4">
+                  <form #F="ngForm" (ngSubmit)="send(F.form,message?.senderUsernameId)">
+                    <br>
+                    <input type="text" class="form-control" name="title" placeholder="Message title" ngModel>
+                    <textarea class="form-control" name="content" placeholder="Message" ngModel></textarea>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+
+
+              </div>
+
+            </div>
+
+            <div class="d-flex flex-row-reverse bd-highlight">
+              <div class="pr-1" (click)=edit(message?._id)>
+                <i class="fas fa-reply"></i>
+              </div>
+            </div>
+            <div>
+
+            </div>
+          </div>
+        </div>
+
+        <br>
+
+    </div>
+
+  </div>

@@ -29,6 +29,11 @@ export class TopicComponent implements OnInit {
     // Get the posts of this topic
     this.api.getPostsByTopicId(this.api.topicId).subscribe((response)=>{
       this.posts = response['posts'];
+      for (let i = 0; i < this.posts.length ; i++) {
+        this.api.getusername(this.posts[i].usernameId).subscribe((response:{username:string})=>{
+          this.posts[i].username = response.username;
+        });
+      }
     });
 
     // Get the topic

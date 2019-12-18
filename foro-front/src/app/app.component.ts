@@ -37,6 +37,9 @@ export class AppComponent implements OnInit {
   home() {
     this.router.navigateByUrl('/home');
   }
+  messages() {
+    this.router.navigateByUrl('/messages/md');
+  }
   // Go register page
   register() {
     this.router.navigateByUrl('/user/register');
