@@ -98,7 +98,7 @@ export class PostComponent implements OnInit {
   }
 
   delete(id){
-    
+    this.user.usernameId = this.user._id;
     this.api.deleteComment(this.user,id).subscribe(response =>{
       this.reload();
       

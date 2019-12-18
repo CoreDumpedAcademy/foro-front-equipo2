@@ -96,8 +96,16 @@ export class RoutesService {
   Rating(data:object, commentId:string){
     return this.http.post(`${this.adress}comment/vote/${commentId}`,data);
   }
-  deleteComment(user,id){
-    return this.http.delete(`${this.adress}comment/delete/${id}`,user._id);
+  deleteComment(user:User,id){
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      body: {
+        usernameId: user._id,
+      }
+    }
+    return this.http.delete(`${this.adress}comment/delete/${id}`,options);
   }
   editComment(id,comment:Comment){
     return this.http.patch(`${this.adress}comment/edit/${id}`,comment);
