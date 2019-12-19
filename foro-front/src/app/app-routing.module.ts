@@ -1,3 +1,4 @@
+import { MensajeriaComponent } from './components/mensajeria/mensajeria.component';
 import { MDComponent } from './components/messages/md/md.component';
 import { PostEditorComponent } from './components/posts/post-editor/post-editor.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:'user/register',component: RegisterComponent},
   {path:'topic',component: TopicComponent},
   {path:'messages/md',component: MDComponent},
+  {path:'messages/insta',component: MensajeriaComponent},
 ];
 
 @NgModule({
