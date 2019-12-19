@@ -17,6 +17,7 @@ import { TopicComponent } from './components/topic/topic.component';
 import { RoutesService } from './service/routes.service';
 import { MDComponent } from './components/messages/md/md.component';
 import { ContactsComponent } from './components/messages/contacts/contacts.component';
+import { MensajeriaComponent } from './mensajeria/mensajeria.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ContactsComponent } from './components/messages/contacts/contacts.compo
     PostEditorComponent,
     TopicComponent,
     MDComponent,
-    ContactsComponent
+    ContactsComponent,
+    MensajeriaComponent
   ],
   imports: [
     BrowserModule,
