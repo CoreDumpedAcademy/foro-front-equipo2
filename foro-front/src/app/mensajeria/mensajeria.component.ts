@@ -12,8 +12,10 @@ export class MensajeriaComponent implements OnInit {
    }
 
    private conexion;
+   usernameId;
 
   ngOnInit() {
+    this.socketService.sendInit(this.usernameId);
     this.conexion = this.socketService.getMessages().subscribe( msg => {
       //mensaje
     });
