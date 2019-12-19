@@ -32,7 +32,7 @@ export class PostResultsComponent implements OnInit {
 }
 goToPost(postId:string){
   this.api.postId = postId;
-  this.router.navigateByUrl('post');
+  this.router.navigateByUrl('post/:_Id');
 }
 
 }

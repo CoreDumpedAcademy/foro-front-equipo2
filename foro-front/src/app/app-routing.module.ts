@@ -12,7 +12,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {path:'home',component: HomePageComponent},
-  {path:'post',component: PostComponent},
+  {path:'post/:_Id',component: PostComponent},
   {path:'post/results',component: PostResultsComponent},
   {path:'post/create',component: PostEditorComponent},
   {path:'user',component: ProfileComponent},

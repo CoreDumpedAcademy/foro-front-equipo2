@@ -6,6 +6,7 @@ import { User } from 'src/app/interfaces/user';
 import { Comment } from 'src/app/interfaces/comment';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -20,9 +21,10 @@ export class PostComponent implements OnInit {
   editState:boolean=false;
   editId:string;
 
-  constructor(private api: RoutesService, private router: Router, private cookieService: CookieService) { }
+  constructor(private api: RoutesService, private router: Router, private cookieService: CookieService, private _route: ActivatedRoute) { }
 
   ngOnInit() {
+    let id= +this._route.snapshot.paramMap.get('_Id');
     // Get the post
     this.api.getPostById(this.api.postId).subscribe((response)=>{
       this.post= response['post'];
