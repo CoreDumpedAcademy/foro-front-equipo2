@@ -36,28 +36,27 @@ export class MensajeriaComponent implements OnInit {
        this.user = response.data;
        this.usernameId = this.user._id
        this.socketService.sendInit(this.usernameId);
+       this.api.getmsg(this.user._id);
     this.conexion = this.socketService.getMessages().subscribe( msg => {
-      console.log(msg);
+      this.msg = msg;
     });
        
        });
-       
-       
-    
   }
 
   sendMessage(form){
     console.log(form.value);
-    
-    const msg = {
-      usernameId: this.user._id,
-      receiverUsernameId: form.value.receiverUsernameId,
-      content: form.value.content,
-      creationDate: Date.now()
-
+    this.api.getuser(form.value.receiverUsername).subscribe((response:{user:User})=>{
+      
+      const msg = {
+        usernameId: this.user._id,
+        receiverUsernameId: response.user._id,
+        content: form.value.content,
+        creationDate: Date.now()
+      }
+      console.log(msg);
+      this.socketService.sendMessage(msg);
+    })
     }
-    console.log(msg);
-    this.socketService.sendMessage(msg);
-  }
-
+    
 }
