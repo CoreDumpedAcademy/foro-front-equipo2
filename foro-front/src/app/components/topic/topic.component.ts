@@ -37,6 +37,7 @@ export class TopicComponent implements OnInit {
     });
 
     // Get the topic
+    console.log(this.api.topicId);
     this.api.getTopicById(this.api.topicId).subscribe((response)=>{
       this.topic = response['topic'];
       this.topicTitle = this.topic['title'];
