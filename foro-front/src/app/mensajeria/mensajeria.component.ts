@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SocketService } from '../socket.service.service';
 
 @Component({
   selector: 'app-mensajeria',
@@ -7,9 +8,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MensajeriaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private socketService: SocketService) {
+   }
+
+   private conexion;
 
   ngOnInit() {
+    this.conexion = this.socketService.getMessages().subscribe( msg => {
+      //mensaje
+    });
   }
 
+  ngOnDestroy(){
+    this.conexion.unsubscribe();
+  }
+
+  sendMessage(usernameId, receiverUsernameId, content){
+    const msg = {
+      usernameId: usernameId,
+      receiverUsernameId: receiverUsernameId,
+      content: content,
+    }
+    this.socketService.sendMessage(msg);
+  }
 }
