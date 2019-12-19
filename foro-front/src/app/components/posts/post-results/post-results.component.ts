@@ -22,8 +22,7 @@ export class PostResultsComponent implements OnInit {
   ngOnInit() {
     this.api.change.subscribe(posts => {
       this.posts = posts.result;
-      console.log(this.posts);
-      
+      console.log(posts);
     });
   }
 

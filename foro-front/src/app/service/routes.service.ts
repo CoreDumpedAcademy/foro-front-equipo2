@@ -66,8 +66,8 @@ export class RoutesService {
     return this.http.get(`${this.adress}user/loginToken`, { headers : httpOptions.header} );
   }
   // get the posts made by an user
-  userPosts(username:string){
-    return this.http.get(`${this.adress}post/user/${username}`);
+  userPosts(usernameId:string){
+    return this.http.get(`${this.adress}post/user/${usernameId}`);
   }
 
   create(post:Post){
@@ -87,8 +87,8 @@ export class RoutesService {
   getPostById(postId: string){
     return this.http.get(`${this.adress}post/id/${postId}`);
   }
-  getComments(postId: string){
-    return this.http.get(`${this.adress}comment/post/${postId}`);
+  getComments(postId: string,pageNo){
+    return this.http.get(`${this.adress}comment/post/${postId}?pageNo=${pageNo}&size=10`);
   }
   commentPost(data){
     return this.http.post(`${this.adress}comment/new`, data);

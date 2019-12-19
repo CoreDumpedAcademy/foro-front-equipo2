@@ -19,11 +19,13 @@ export class PostComponent implements OnInit {
   user:User;
   editState:boolean=false;
   editId:string;
+  pageNo:number = 1;
 
   constructor(private api: RoutesService, private router: Router, private cookieService: CookieService) { }
 
   ngOnInit() {
     // Get the post
+    console.log(this.api.postId);
     this.api.getPostById(this.api.postId).subscribe((response)=>{
       this.post= response['post'];
       this.api.getusername(this.post.usernameId).subscribe((response:{username:string}) =>{
@@ -31,7 +33,7 @@ export class PostComponent implements OnInit {
       });
     });
     // Get the comments by postId
-  this.api.getComments(this.api.postId).subscribe(data =>{
+  this.api.getComments(this.api.postId,this.pageNo).subscribe(data =>{
     this.comments = data['comments'];
     for (let i = 0; i < this.comments.length ; i++) {
       this.api.getusername(this.comments[i].usernameId).subscribe((response:{username:string})=>{
@@ -51,6 +53,7 @@ export class PostComponent implements OnInit {
   }
 
   reload(){
+    console.log(this.api.postId);
     this.api.getPostById(this.api.postId).subscribe((response)=>{
       this.post= response['post'];
       this.api.getusername(this.post.usernameId).subscribe((response:{username:string}) =>{
@@ -58,7 +61,10 @@ export class PostComponent implements OnInit {
       });
     });
     // Get the comments by postId
-  this.api.getComments(this.api.postId).subscribe(data =>{
+    console.log(this.api.postId);
+  this.api.getComments(this.api.postId,this.pageNo).subscribe(data =>{
+    console.log(data);
+    
     this.comments = data['comments'];
     for (let i = 0; i < this.comments.length ; i++) {
       this.api.getusername(this.comments[i].usernameId).subscribe((response:{username:string})=>{
@@ -115,5 +121,19 @@ export class PostComponent implements OnInit {
       this.reload();
     })
   }
-  
+
+  pagination(result){
+    this.pageNo = result;
+    this.reload();
+  }
+  paginationForw(){
+  this.pageNo= this.pageNo +1;
+  console.log(this.pageNo)
+  this.reload();
+  }
+  paginationBack(){
+  this.pageNo--;
+  console.log(this.pageNo)
+  this.reload();
+  }
 }
