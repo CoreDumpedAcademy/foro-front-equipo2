@@ -30,6 +30,7 @@ export class MensajeriaComponent implements OnInit {
       usernameId: usernameId,
       receiverUsernameId: receiverUsernameId,
       content: content,
+      creationDate: Date.now(),
     }
     this.socketService.sendMessage(msg);
   }
