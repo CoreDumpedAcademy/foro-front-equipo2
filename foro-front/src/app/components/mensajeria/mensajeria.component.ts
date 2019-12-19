@@ -18,6 +18,7 @@ export class MensajeriaComponent implements OnInit {
   msg: any;
   myMessages: instaMessage[];
   sendMessage1: any;
+  usernameId: string;
 
   constructor(
     private socketService: SocketService,
@@ -28,23 +29,23 @@ export class MensajeriaComponent implements OnInit {
    }
 
    private conexion;
-   usernameId;
-
+   
   ngOnInit() {
     const token = this.cookieService.get('token');
      this.api.authToken(token).subscribe((response:{data: User}) => {
        this.user = response.data;
-       this.user.usernameId = this.user._id
-       });
-    this.socketService.sendInit(this.user);
+       this.usernameId = this.user._id
+       this.socketService.sendInit(this.usernameId);
     this.conexion = this.socketService.getMessages().subscribe( msg => {
       console.log(msg);
     });
+       
+       });
+       
+       
+    
   }
 
-  ngOnDestroy(){
-    this.conexion.unsubscribe();
-  }
 
   sendMessage(form){
     console.log(form.value);
@@ -56,6 +57,7 @@ export class MensajeriaComponent implements OnInit {
       creationDate: Date.now()
 
     }
+    console.log(msg);
     this.socketService.sendMessage(msg);
   }
 
