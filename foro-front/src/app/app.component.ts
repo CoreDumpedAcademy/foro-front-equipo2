@@ -48,6 +48,10 @@ export class AppComponent implements OnInit {
   profile() {
     this.router.navigateByUrl('/user');
   }
+  insta() {
+    this.router.navigateByUrl('/messages/insta');
+  }
+  
   // Search engine to find matches in the different post of the database
   postSearch(form) {
     console.log(form.value);

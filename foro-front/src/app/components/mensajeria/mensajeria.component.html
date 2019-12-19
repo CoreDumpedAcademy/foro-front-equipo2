@@ -1,0 +1,19 @@
+<p>mensajeria works!</p>
+<br>
+<form #F="ngForm" (ngSubmit)="sendMessage(F.form)">
+  <div class="form-group">
+    <textarea class="form-control" name="content" placeholder="Message" ngModel></textarea>
+    <input type="text" class="form-control" name="receiverUsernameId" placeholder="User to send message"
+      ngModel>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+<br>
+
+<div class="media-body">
+  <span class="text-success">From: {{message?.senderUsernameId}}</span>
+  <br>
+  {{msg?.content}}<br>
+
+</div>
