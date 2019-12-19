@@ -65,6 +65,9 @@ export class RoutesService {
     httpOptions.header= httpOptions.header.set('token', token );
     return this.http.get(`${this.adress}user/loginToken`, { headers : httpOptions.header} );
   }
+  getuser(data){
+    return this.http.get(`${this.adress}user/user/${data}`);
+  }
   // get the posts made by an user
   userPosts(usernameId:string){
     return this.http.get(`${this.adress}post/user/${usernameId}`);
@@ -126,5 +129,6 @@ export class RoutesService {
    editUser(username: string, user: User ){
     return this.http.patch(`${this.adress}user/editUser/${username}`, user);
   }
+
 
 }
