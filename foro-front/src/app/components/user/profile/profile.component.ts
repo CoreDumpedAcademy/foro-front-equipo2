@@ -46,9 +46,25 @@ export class ProfileComponent implements OnInit {
 
   update(form){
     console.log(form.value);
+    const username = this.user.username
+    this.api.editUser(username, form.value).subscribe((response) => {
+      if(form.value.password != "" || form.value.username != ""){
+        alert("You must login again");
+        this.logout();
+      }else
+      this.router.navigateByUrl('/home');
+    }, (error: HttpErrorResponse) => {
+      alert("Error al actualizar");
+    });
   }
   goToPost(postId:string){
     this.api.postId = postId;
     this.router.navigateByUrl('post');
+  }
+  logout(){
+    this.cookieService.delete('token');
+    this.router.navigateByUrl('/home');
+    this.cookieService.delete('token');
+    location.reload();
   }
 }

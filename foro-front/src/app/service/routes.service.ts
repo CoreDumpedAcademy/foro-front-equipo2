@@ -122,5 +122,9 @@ export class RoutesService {
   getusername(usernameId){
     return this.http.get(`${this.adress}user/username/${usernameId}`);
   }
+   //edit user
+   editUser(username: string, user: User ){
+    return this.http.patch(`${this.adress}user/editUser/${username}`, user);
+  }
 
 }
