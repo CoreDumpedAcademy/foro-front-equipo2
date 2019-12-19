@@ -25,10 +25,13 @@ export class SocketService {
    }
 
    sendInit(usernameId){
+     console.log(usernameId);
     this.socket.emit('init', usernameId);
    }
 
    sendMessage(msg){
+     console.log(msg);
+     
     this.http.post('http://localhost:3000/instaMessage/send',msg); 
     this.socket.emit('message', msg);
    }
