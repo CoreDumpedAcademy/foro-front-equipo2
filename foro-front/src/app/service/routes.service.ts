@@ -55,10 +55,6 @@ export class RoutesService {
   registerUser(user:User){
     return this.http.post(`${this.adress}user/signup`, user );
   }
-  //edit user
-  editUser(username: string, user: User ){
-    return this.http.patch(`${this.adress}user/editUser/${username}`, user);
-  }
 
   // token creation
   token(token: string){
