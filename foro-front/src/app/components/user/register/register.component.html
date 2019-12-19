@@ -1,22 +1,22 @@
 <div class="container">
   <br>
-  <h3 class="text center">SingUp</h3>
+  <h3 class="text-primary">SingUp</h3>
   <br>
   <form #registerForm="ngForm" (ngSubmit)="register(registerForm.form)">
     <div class="form-row text-center">
-      <div class="col-md-2">
+      <div class="col-lg-2">
         <input type="text" class="form-control" name="name" placeholder="name" ngModel>
       </div>
-      <div class="col-md-2">
+      <div class="col-lg-2">
           <input type="text" class="form-control" name="surname" placeholder="surname" ngModel>
         </div>
-      <div class="col-md-2">
+      <div class="col-lg-2">
         <input type="text" class="form-control" name="username" placeholder="username" ngModel>
       </div>
-      <div class="col-md-2">
+      <div class="col-lg-2">
           <input type="email" class="form-control" name="email" placeholder="email" ngModel>
       </div>
-      <div class="col-md-2">
+      <div class="col-lg-2">
         <input type="password" class="form-control" name="password" placeholder="password" ngModel>
       </div>
         <button type="submit" class="btn btn-secondary" > singUp </button>
