@@ -92,14 +92,10 @@ export class MDComponent implements OnInit {
   }
   send(form,receiver){
     this.sendMessage = form.value;
-    console.log(form.value.receiverUsername)
     this.api.getuser(form.value.receiverUsername).subscribe((response:{user:User})=>{
-      console.log(response.user._id);
       this.sendMessage.receiverUsernameId = response.user._id;
       this.sendMessage.senderUsernameId = this.user._id
-    console.log(this.sendMessage);
     this.api.sendMessage(this.sendMessage).subscribe((response)=>{
-      console.log(response);
       this.reload();
     });
     })

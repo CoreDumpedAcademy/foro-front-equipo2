@@ -129,6 +129,9 @@ export class RoutesService {
    editUser(username: string, user: User ){
     return this.http.patch(`${this.adress}user/editUser/${username}`, user);
   }
+  getmsg(usernameId){
+    console.log(this.http.get(`${this.adress}instaMessage/sent/${usernameId}`))
+  }
 
 
 }
