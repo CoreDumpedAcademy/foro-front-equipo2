@@ -16,7 +16,7 @@ import { PostEditorComponent } from './components/posts/post-editor/post-editor.
 import { TopicComponent } from './components/topic/topic.component';
 import { RoutesService } from './service/routes.service';
 import { MDComponent } from './components/messages/md/md.component';
-import { ContactsComponent } from './components/messages/contacts/contacts.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
 import { MensajeriaComponent } from './components/mensajeria/mensajeria.component';
 import { SocketService } from './socket.service.service';
 

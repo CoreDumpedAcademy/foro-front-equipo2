@@ -129,9 +129,15 @@ export class RoutesService {
    editUser(username: string, user: User ){
     return this.http.patch(`${this.adress}user/editUser/${username}`, user);
   }
-  getmsg(usernameId){
-    console.log(this.http.get(`${this.adress}instaMessage/sent/${usernameId}`))
+  sendmessage(msg){
+    console.log(msg);
+    return this.http.post('http://localhost:3000/instaMessage/send', msg); 
   }
-
+  getSentMsg(usernameId){
+    return this.http.get(`http://localhost:3000/instaMessage/sent/${usernameId}`);
+  }
+  getRecMsg(usernameId){
+    return this.http.get(`http://localhost:3000/instaMessage/${usernameId}`);
+  }
 
 }

@@ -22,16 +22,30 @@ export class PostResultsComponent implements OnInit {
   ngOnInit() {
     this.api.change.subscribe(posts => {
       this.posts = posts.result;
-      console.log(posts);
+      
+      for (let i = 0; i < this.posts.length; i++) {
+        this.api.getusername(this.posts[i].usernameId).subscribe((response:{username:string}) =>{
+          this.posts[i].username = response.username;
+          
+        });
+        
+      }
     });
   }
 
   responsePost(posts) {
     this.posts = posts;
+    for (let i = 0; i < this.posts.length; i++) {
+      this.api.getusername(this.posts[i].usernameId).subscribe((response:{username:string}) =>{
+        this.posts[i].username = response.username;
+      });
+      
+    }
 }
 goToPost(postId:string){
   this.api.postId = postId;
   this.router.navigateByUrl('post');
+
 }
 
 }
