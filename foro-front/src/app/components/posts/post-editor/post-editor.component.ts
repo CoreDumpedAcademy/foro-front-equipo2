@@ -60,6 +60,7 @@ export class PostEditorComponent implements OnInit {
     
     this.api.create(this.post).subscribe((response) => {
       console.log(response);
+      this.router.navigateByUrl('/home');
     }, (error: HttpErrorResponse) => {
       console.log(error);
     });
