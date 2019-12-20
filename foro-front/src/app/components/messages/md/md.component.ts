@@ -90,7 +90,7 @@ export class MDComponent implements OnInit {
       alert('You should be logged for access to messages');
     });
   }
-  send(form,receiver){
+  send(form){
     this.sendMessage = form.value;
     this.api.getuser(form.value.receiverUsername).subscribe((response:{user:User})=>{
       this.sendMessage.receiverUsernameId = response.user._id;
@@ -99,7 +99,15 @@ export class MDComponent implements OnInit {
       this.reload();
     });
     })
-    
+  }
+  response(form,receiver){
+    this.sendMessage = form.value;
+    console.log(receiver);
+      this.sendMessage.receiverUsernameId = receiver;
+      this.sendMessage.senderUsernameId = this.user._id
+    this.api.sendMessage(this.sendMessage).subscribe((response)=>{
+      this.reload();
+    });
   }
   edit(id){
     console.log(id);

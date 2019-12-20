@@ -38,7 +38,7 @@
 
 
                 <div *ngIf="editState && message?._id == editId " class="pr-4">
-                  <form #F="ngForm" (ngSubmit)="send(F.form,message?.senderUsernameId)">
+                  <form #F="ngForm" (ngSubmit)="response(F.form,message?.senderUsernameId)">
                     <br>
                     <input type="text" class="form-control" name="title" placeholder="Message title" ngModel>
                     <textarea class="form-control" name="content" placeholder="Message" ngModel></textarea>
