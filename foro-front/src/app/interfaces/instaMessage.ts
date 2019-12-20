@@ -1,9 +1,10 @@
 export interface instaMessage {
   _id:string,
-  receiverUsernameId: any,
-  receiverUsername:any,
-  senderUsernameId: any,
-  senderUsername: any,
-  content: any,
-  creationDate: any,
+  receiverUsernameId: string,
+  receiverUsername:string,
+  senderUsernameId: string,
+  senderUsername: string,
+  content: string,
+  creationDate: Date,
+  logicaldelete:boolean,
 }
